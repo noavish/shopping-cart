@@ -4,14 +4,25 @@
   "description": "for shopping!",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "export": "^0.1.337",
+    "express": "^4.16.2",
     "font-awesome": "^4.7.0",
     "handlebars": "^4.0.10",
     "jquery": "^3.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noavish/shopping-cart.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noavish/shopping-cart/issues"
+  },
+  "homepage": "https://github.com/noavish/shopping-cart#readme"
 }
