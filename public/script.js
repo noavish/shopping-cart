@@ -1,5 +1,13 @@
 // an array with all of our cart items
-var cart = [];
+var STORAGE_ID = 'shoppingcart';
+var saveToLocalStorage = function () {
+  localStorage.setItem(STORAGE_ID, JSON.stringify(cart));
+}
+var getFromLocalStorage = function () {
+  return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+}
+
+var cart = getFromLocalStorage();
 
 var updateCart = function () {
   // TODO: Write this function. In this function we render the page.
@@ -18,10 +26,12 @@ var addItem = function (item) {
   for(var i = 0; i < cart.length; i++) {
     if (item.itemName === cart[i].itemName) {
       cart[i].itemQuantity += 1
+      saveToLocalStorage()
       return;
     }
 }
 cart.push(item)
+saveToLocalStorage()
 }
 
   // TODO: Write this function. Remember this function has nothing to do with display. 
@@ -31,6 +41,7 @@ cart.push(item)
 var clearCart = function () {
   // TODO: Write a function that clears the cart ;-)
   cart = [];
+  saveToLocalStorage()
   updateCart();
 }
 
@@ -72,6 +83,7 @@ $('.cart-list').on('click', 'span', function () {
   for( var i = 0; i < cart.length; i++){
     if(removeItem === cart[i].itemName) {
       cart.splice(i,1)
+      saveToLocalStorage()
     }
   }
   updateCart();
