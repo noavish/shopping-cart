@@ -103,3 +103,14 @@ body {
 .clear-cart {
   width: 100%;
 }
+
+.new-item-input {
+  display: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.add-new-item {
+  background-color: #008cba;
+  color: white;
+}

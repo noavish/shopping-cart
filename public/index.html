@@ -18,6 +18,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="#">SHOPPING CART</a>
       </div>
 
@@ -25,6 +31,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="view-add-item" data-toggle="dropdown" role="button">Add New Item</a>
+          </li>
           <li class="dropdown">
             <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
           </li>
@@ -38,6 +47,15 @@
   </div>
 
   <div class="container">
+    <div class="new-item-input">
+      <p class="input-title">Add Item Details</p>
+      
+      <input class="form-control" type="text" placeholder="Item Name" data-id="item-name">
+      <input class="form-control" type="text" placeholder="Item Price" data-id="item-price">
+      <input class="form-control" type="text" placeholder="Link to Item Image" data-id="item-image">
+      <button type="button" class="btn add-new-item">Add Item</button>
+    </div>
+
     <div class="shopping-cart">
       <p class="cart-title">Items in Cart</p>
       <div class="cart-list">
@@ -147,17 +165,50 @@
         </div>
       </div>
     </div>
+    <div class="row new-item">
+    </div>
   </div>
+
+  
+
+  <script id="new-item-template" type="text/x-handlebars-template">
+    <div class="col-md-4">
+        <div class="card-container">
+            <div class="card item" data-name="{{newItemName}}" data-price="{{newItemPrice}}">
+              <div class="pricebox">
+                <p class="price"> ${{newItemPrice}} </p>
+              </div>
+              <div class="buybox">
+                <p class="add-to-cart"> ADD TO CART </p>
+              </div>
+              <div class="card-inner">
+                <img src="{{newItemImage}}" class="proimage">
+              </div>
+            </div>
+          </div>  
+    </div>
+    
+  </script>
+
+
 
   <script id="item-template" type="text/x-handlebars-template">
     {{#each items}}
       <p>{{itemName}} - {{itemPrice}}</p>
     {{/each}}
   </script>
+
   <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="handlebars/dist/handlebars.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="addItem.js"></script>
+  <script>
+      $('.view-add-item').on('click', function () {
+        // TODO: hide/show the add new item
+        $('.new-item-input').toggle();
+      });
+    </script>
 </body>
 </html>
 
