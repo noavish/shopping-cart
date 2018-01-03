@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
@@ -7,18 +8,21 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Shopping Cart!</title>
 </head>
+
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -35,11 +39,15 @@
             <a href="#" class="view-add-item" data-toggle="dropdown" role="button">Add New Item</a>
           </li>
           <li class="dropdown">
-            <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
+            <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart
+              <i class="fa fa-shopping-cart"></i>
+            </a>
           </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
   </nav>
 
   <div class="page-header">
@@ -49,7 +57,7 @@
   <div class="container">
     <div class="new-item-input">
       <p class="input-title">Add Item Details</p>
-      
+
       <input class="form-control" type="text" placeholder="Item Name" data-id="item-name">
       <input class="form-control" type="text" placeholder="Item Price" data-id="item-price">
       <input class="form-control" type="text" placeholder="Link to Item Image" data-id="item-image">
@@ -60,7 +68,9 @@
       <p class="cart-title">Items in Cart</p>
       <div class="cart-list">
       </div>
-      <p>Total: $<span class="total">0</span></p>
+      <p>Total: $
+        <span class="total">0</span>
+      </p>
       <button type="button" class="btn clear-cart">Clear Cart</button>
     </div>
 
@@ -114,7 +124,7 @@
         </div>
       </div>
 
-    
+
     </div>
     <div class="row">
       <div class="col-md-4">
@@ -169,7 +179,6 @@
     </div>
   </div>
 
-  
 
   <script id="new-item-template" type="text/x-handlebars-template">
     <div class="col-md-4">
@@ -187,14 +196,11 @@
             </div>
           </div>  
     </div>
-    
   </script>
-
-
 
   <script id="item-template" type="text/x-handlebars-template">
     {{#each items}}
-      <p>{{itemName}} - {{itemPrice}}</p>
+      <p data-name={{itemName}} data-quantity={{itemQuantity}}>{{itemName}} ({{itemQuantity}}) - ${{itemPrice}}</p>
     {{/each}}
   </script>
 
@@ -203,12 +209,7 @@
   <script type="text/javascript" src="handlebars/dist/handlebars.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
   <script type="text/javascript" src="addItem.js"></script>
-  <script>
-      $('.view-add-item').on('click', function () {
-        // TODO: hide/show the add new item
-        $('.new-item-input').toggle();
-      });
-    </script>
-</body>
-</html>
 
+</body>
+
+</html>

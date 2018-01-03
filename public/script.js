@@ -10,14 +10,14 @@ var updateCart = function () {
   var itemTemplate = Handlebars.compile(itemSource);
   var newHTML = itemTemplate({items: cart});
   $('.cart-list').append(newHTML);
-  $('.cart-list').children('p').append(`<span><i class="fa fa-trash-o"></i></span>`);
+  $('.cart-list').children('p').append(`<span><i class="fa fa-trash-o rmbtn"></i></span>`);
   $('.total').text(sumUpCart());
 }
 
 var addItem = function (item) {
   for(var i = 0; i < cart.length; i++) {
     if (item.itemName === cart[i].itemName) {
-      cart[i].quantity += 1
+      cart[i].itemQuantity += 1
       return;
     }
 }
@@ -38,7 +38,7 @@ var clearCart = function () {
 function sumUpCart () {
   var cartSum = 0;
   for (var i=0; i<cart.length; i++) {
-    cartSum += cart[i].itemPrice * cart[i].quantity;
+    cartSum += cart[i].itemPrice * cart[i].itemQuantity;
   }
   return cartSum;
 }
@@ -48,11 +48,17 @@ $('.view-cart').on('click', function () {
   $('.shopping-cart').toggleClass('show');
 });
 
+// add item toggle hide/view
+$('.view-add-item').on('click', function () {
+  // TODO: hide/show the add new item
+  $('.new-item-input').toggle();
+});
+
 $('.add-to-cart').on('click', function () {
   // TODO: get the "item" object from the page
   var itemName = $(this).parents('.item').data().name;
   var itemPrice = $(this).parents('.item').data().price;
-  var item = {itemName: itemName, itemPrice: itemPrice, quantity: 1};
+  var item = {itemName: itemName, itemPrice: itemPrice, itemQuantity: 1};
   addItem(item);
   updateCart();
 });
@@ -61,15 +67,16 @@ $('.clear-cart').on('click', function () {
   clearCart();
 });
 
+$('.cart-list').on('click', 'span', function () {
+  var removeItem = $(this).parents('p').data().name
+  for( var i = 0; i < cart.length; i++){
+    if(removeItem === cart[i].itemName) {
+      cart.splice(i,1)
+    }
+  }
+  updateCart();
+});
 // update the cart as soon as the page loads!
 updateCart();
 
 
-// remove item button
-function removeBtn() {
-  var $rmButton = $('<button class="rmBtn"><i class="fa fa-trash-o"></i></button>')
-  $rmButton.appendTo($('.cart-list'))
-}
-
-
-// $('<input type="button"<i class="icon-fixed-width icon-trash"></i></>')
