@@ -76,6 +76,18 @@ $('.cart-list').on('click', 'span', function () {
   }
   updateCart();
 });
+
+
+$('.new-item').on('click', '.add-to-cart', function(){
+  var itemName = $(this).parents('.item').data().name;
+  var itemPrice = $(this).parents('.item').data().price;
+  var item = {itemName: itemName, itemPrice: itemPrice, itemQuantity: 1};
+  addItem(item);
+  updateCart();
+})
+
+
+
 // update the cart as soon as the page loads!
 updateCart();
 
