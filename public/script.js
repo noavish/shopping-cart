@@ -27,8 +27,6 @@ cart.push(item)
   // TODO: Write this function. Remember this function has nothing to do with display. 
   // It simply is for adding an item to the cart array, no HTML involved - honest ;-)
 
-    
-
 
 var clearCart = function () {
   // TODO: Write a function that clears the cart ;-)
